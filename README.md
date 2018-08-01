@@ -1,38 +1,58 @@
 # Temperature Trivia
 
 ## Setup
-Choose one of the three options listed below for setup.  You only need to complete one of the three options below to setup this sample.
+Select **only one** of three options below.
 
 ### Option 1: Add to Dialogflow (recommended)
-Click on the **Add to Dialogflow** button below and follow the prompts to create a new agent:
-
-[![Temperature Trivia](https://storage.googleapis.com/dialogflow-oneclick/deploy.svg "Temperature Trivia")](https://console.dialogflow.com/api-client/oneclick?templateUrl=https%3A%2F%2Fstorage.googleapis.com%2Fdialogflow-oneclick%2Ftemperature-converter-agent.zip&agentName=TemperatureConverterSample)
+Select [![Temperature Trivia](https://storage.googleapis.com/dialogflow-oneclick/deploy.svg "Temperature Trivia")](https://console.dialogflow.com/api-client/oneclick?templateUrl=https%3A%2F%2Fstorage.googleapis.com%2Fdialogflow-oneclick%2Ftemperature-converter-agent.zip&agentName=TemperatureConverterSample) to create a new agent.
 
 ### Option 2: Dialogflow Inline Editor
-1. [Sign up for or sign into Dialogflow](https://console.dialogflow.com/api-client/#/login) and [create a agent](https://dialogflow.com/docs/agents#create_an_agent)
-1. Go to your agent's settings and [Restore from zip](https://dialogflow.com/docs/agents#export_and_import) using the `dialogflow-agent.zip` in this directory (Note: this will overwrite your existing agent)
-1. [Enable the Cloud Function for Firebase inline editor](https://dialogflow.com/docs/fulfillment#cloud_functions_for_firebase)
-1. Change the name of the function in `functions/index.js` from `dialogflowFulfillmentLibAdvancedSample` to `dialogflowFirebaseFulfillment`
-1. Copy this code in `functions/index.js` the `index.js` file in the Dialogflow Cloud Function for Firebase inline editor.
-1. Add `"dialogflow-fulfillment": "^0.4.0"` to the `package.json` file's `dependencies` object in the Dialogflow Cloud Function for Firebase inline editor.
-1. Click `Deploy`
+1. Create a [Dialogflow Agent](https://console.dialogflow.com/).
+2. Go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `dialogflow-agent.zip` in this directory.<sup>A.</sup>
+3. **Fulfillment** > **Enable** the [Inline Editor](https://dialogflow.com/docs/fulfillment#cloud_functions_for_firebase)<sup>B.</sup>
+4. Change the name of the function in `functions/index.js` from `dialogflowFulfillmentLibAdvancedSample` to `dialogflowFirebaseFulfillment`
+5. Under **Fulfillment** > **Inline Editor** > copy the code from this repo in `functions/index.js` and paste into the `index.js` file.
+6. Under **Fulfillment** > **Inline Editor** > add `"dialogflow-fulfillment": "^0.5.0"` to the `package.json` file's `dependencies` object.
+7. Select **Deploy**.
 
-### Setup: Firebase CLI (option 2)
+### Option 3: Firebase CLI
+1. Create a [Dialogflow Agent](https://console.dialogflow.com/).
+2. `git clone https://github.com/dialogflow/fulfillment-temperature-converter-nodejs.git`
+3. Go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `dialogflow-agent.zip` in this directory.<sup>A.</sup>
+4. `cd` to the `functions` directory
+5. Run `npm install`
+6. Install the Firebase CLI by running `npm install -g firebase-tools`
+7. Login with your Google account, `firebase login`
+8.  Add your project to the sample with `firebase use <project ID>`
+  + In Dialogflow console under **Settings** ⚙ > **General** tab > copy **Project ID**.
+9. Run `firebase deploy --only functions:dialogflowFulfillmentLibAdvancedSample`
+10. Back in Dialogflow Console > **Fulfullment** > **Enable** Webhook.
+11. Paste the URL from the Firebase Console’s events column into the **URL** field > **Save**.
 
-1. [Sign up for or sign into Dialogflow](https://console.dialogflow.com/api-client/#/login) and [create a agent](https://dialogflow.com/docs/agents#create_an_agent)
-1. Go to your agent's settings and [Restore from zip](https://dialogflow.com/docs/agents#export_and_import) using the `dialogflow-agent.zip` in this directory (Note: this will overwrite your existing agent)
-1. `cd` to the `functions` directory
-1. Run `npm install`
-1. Install the Firebase CLI by running `npm install -g firebase-tools`
-1. Login to your Google account with `firebase login`
-1. Add your project to the sample with `firebase use [project ID]` [find your project ID here](https://dialogflow.com/docs/agents#settings)
-1. Run `firebase deploy --only functions:dialogflowFulfillmentLibAdvancedSample`
-1. Paste the URL into your Dialogflow agent's fulfillment
 
-## References and How to report bugs
-* Dialogflow documentation: [https://docs.dialogflow.com](https://docs.dialogflow.com).
-* If you find any issues, please open a bug on [GitHub](https://github.com/dialogflow/dialogflow-fulfillment-nodejs/issues).
-* Questions are answered on [StackOverflow](https://stackoverflow.com/questions/tagged/dialogflow).
+<sup>A.</sup>In general, **Restore from Zip** will overwrite any existing agent.
+
+<sup>B.</sup>Powered by Cloud Functions for Firebase.
+
+## Samples
+| Name                                 | Language                         |
+| ------------------------------------ |:---------------------------------|
+| [Fulfillment Webhook JSON](https://github.com/dialogflow/fulfillment-webhook-json)| JSON |
+| [Dialogflow Console Template](https://github.com/dialogflow/fulfillment-webhook-nodejs)| Node.js
+| [Bike Shop-Google Calendar API](https://github.com/dialogflow/fulfillment-bike-shop-nodejs)| Node.js|
+| [WWO Weather API](https://github.com/dialogflow/fulfillment-weather-nodejs)| Node.js |
+| [Alexa Importer](https://github.com/dialogflow/fulfillment-importer-nodejs) | Node.js |
+| [Temperature Trivia](https://github.com/dialogflow/fulfillment-temperature-converter-nodejs) | Node.js |
+| [Human-Agent](https://github.com/dialogflow/agent-human-handoff-nodejs) | Node.js |
+| [Google Translation API](https://github.com/dialogflow/fulfillment-translate-python) | Python |
+| [WWO Weather API](https://github.com/dialogflow/fulfillment-weather-python) | Python |
+
+## References & Issues
+* Questions? Try [StackOverflow](https://stackoverflow.com/questions/tagged/dialogflow).
+* Find a bug? Report it on [GitHub](https://github.com/dialogflow/fulfillment-webhook-json/issues).
+* Dialogflow [Documentation](https://dialogflow.com/docs/getting-started/basics).
+* For more information on [Initializing Firebase SDK for Cloud Functions](https://firebase.google.com/docs/functions/get-started#set_up_and_initialize_functions_sdk).
++ For more info on [Restore from zip](https://dialogflow.com/docs/agents#export_and_import)
 
 ## How to make contributions?
 Please read and follow the steps in the CONTRIBUTING.md.
