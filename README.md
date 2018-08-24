@@ -17,7 +17,7 @@ Click on the **Add to Dialogflow** button below and follow the prompts to create
 1. Add `"dialogflow-fulfillment": "^0.4.0"` to the `package.json` file's `dependencies` object in the Dialogflow Cloud Function for Firebase inline editor.
 1. Click `Deploy`
 
-### Setup: Firebase CLI (option 2)
+### Option 3: Firebase CLI
 
 1. [Sign up for or sign into Dialogflow](https://console.dialogflow.com/api-client/#/login) and [create a agent](https://dialogflow.com/docs/agents#create_an_agent)
 1. Go to your agent's settings and [Restore from zip](https://dialogflow.com/docs/agents#export_and_import) using the `dialogflow-agent.zip` in this directory (Note: this will overwrite your existing agent)
